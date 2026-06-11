@@ -1,0 +1,50 @@
+{
+  "name": "emr-create",
+  "version": "1.0.0",
+  "description": "基于 @form-create/naive-ui 的医疗表单增强组件库，提供开箱即用的自定义组件、表单配置预设和工具函数。",
+  "type": "module",
+  "main": "./dist/emr-create.umd.cjs",
+  "module": "./dist/emr-create.js",
+  "exports": {
+    ".": {
+      "import": "./dist/emr-create.js",
+      "require": "./dist/emr-create.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "form-create",
+    "naive-ui",
+    "vue3",
+    "medical",
+    "emr",
+    "form",
+    "dynamic-form",
+    "form-builder"
+  ],
+  "author": "heletech",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heletech/emr-create"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0",
+    "@form-create/naive-ui": ">=3.1.0",
+    "naive-ui": ">=2.34.0"
+  },
+  "devDependencies": {
+    "@form-create/naive-ui": "^3.1.33",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "naive-ui": "^2.40.3",
+    "vite": "^8.0.12",
+    "vue": "^3.5.34"
+  }
+}
