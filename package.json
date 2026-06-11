@@ -29,11 +29,11 @@
     "dynamic-form",
     "form-builder"
   ],
-  "author": "heletech",
+  "author": "ItsHeart",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heletech/emr-create"
+    "url": "https://github.com/ItsHeart/emr-create"
   },
   "peerDependencies": {
     "vue": ">=3.3.0",

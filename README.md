@@ -328,4 +328,4 @@ npm publish
 
 ## License
 
-[MIT](./LICENSE) © heletech
+[MIT](./LICENSE) © ItsHeart
