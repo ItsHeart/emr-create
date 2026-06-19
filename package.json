@@ -36,14 +36,14 @@
     "url": "https://github.com/ItsHeart/emr-create"
   },
   "peerDependencies": {
-    "vue": ">=3.3.0",
     "@form-create/naive-ui": ">=3.1.0",
-    "naive-ui": ">=2.34.0"
+    "naive-ui": ">=2.34.0",
+    "vue": ">=3.3.0"
   },
   "devDependencies": {
-    "@form-create/naive-ui": "^3.1.33",
+    "@form-create/naive-ui": "^3.3.1",
     "@vitejs/plugin-vue": "^6.0.6",
-    "naive-ui": "^2.40.3",
+    "naive-ui": "^2.44.1",
     "vite": "^8.0.12",
     "vue": "^3.5.34"
   }

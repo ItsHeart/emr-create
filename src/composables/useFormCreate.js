@@ -18,7 +18,7 @@ import { ref, shallowRef } from 'vue'
  * })
  */
 export function useFormCreate(options = {}) {
-  const fApi = ref(null)
+  const fApi = shallowRef(null)
   const rule = ref(options.rule || [])
   const option = ref(options.option || {})
   const loading = ref(false)

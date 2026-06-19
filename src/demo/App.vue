@@ -1,7 +1,6 @@
 <template>
   <n-config-provider>
     <n-layout content-style="padding: 24px; max-width: 1200px; margin: 0 auto;">
-      <n-h1>emr-create Demo</n-h1>
       <n-card title="基本表单示例" style="margin-bottom: 16px">
         <n-space style="margin-bottom: 12px">
           <n-button type="primary" size="small" @click="handleSave">保存</n-button>
@@ -11,15 +10,15 @@
         <form-create :option="option" :rule="rule" v-model:api="fApi" />
       </n-card>
 
-      <n-card title="表单数据" v-if="formData">
-        <n-code :code="JSON.stringify(formData, null, 2)" language="json" />
+      <n-card title="痕迹表单">
+        <ModifyRecord :option="option" :rule="rule" :modifyData="modifyData" />
       </n-card>
     </n-layout>
   </n-config-provider>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 import {
   compactOption,
   divider,
@@ -32,13 +31,18 @@ import {
   buildSuffix,
   useFormCreate,
 } from '../index.js'
+import ModifyRecord from '../components/ModifyRecord.vue'
 
-const fApi = ref(null)
+const fApi = shallowRef()
 const formData = ref(null)
+const modifyData = ref({
+  oldObj: {},
+  newObj: {}
+});
 
 const option = compactOption
 
-const rule = [
+const rule = ref([
   divider('基本信息'),
   inputField({ field: 'name', title: '姓名', required: true }),
   dateField({ field: 'birthday', title: '出生日期', required: true }),
@@ -98,13 +102,16 @@ const rule = [
       { name: '异常模板', value: '发现异常，需要进一步检查。请于一周后复诊。' },
     ],
   }),
-]
+])
 
 const handleSave = () => {
   if (!fApi.value) return
   fApi.value.validate((valid) => {
     if (valid === true) {
       formData.value = { ...fApi.value.form }
+      modifyData.value.oldObj = modifyData.value.newObj
+      modifyData.value.newObj = { ...fApi.value.form }
+      console.log(modifyData.value)
     } else {
       formData.value = { error: valid[0][0].message }
     }
@@ -113,25 +120,23 @@ const handleSave = () => {
 
 const handleReset = () => {
   if (fApi.value) {
-    fApi.value.resetFields()
     formData.value = null
+    fApi.value.resetFields()
   }
 }
 
 const handleLoad = () => {
-  if (fApi.value) {
-    fApi.value.coverValue({
-      name: '张三',
-      birthday: '1990-01-15',
-      sex: '1',
-      mobile: '13800138000',
-      education: '4',
-      hobbies: 'reading,sport',
-      height: 175,
-      weight: 70,
-      bmi: 22.9,
-      remark: '患者一般情况良好。',
-    })
-  }
+  fApi.value.coverValue({
+    name: '张三',
+    birthday: '1990-01-15',
+    sex: '1',
+    mobile: '13800138000',
+    education: '4',
+    hobbies: 'reading,sport',
+    height: 175,
+    weight: 70,
+    bmi: 22.9,
+    remark: '患者一般情况良好。',
+  })
 }
 </script>
