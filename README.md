@@ -46,7 +46,7 @@ import { compactOption, divider, inputField, selectField } from 'emr-create'
 const fApi = ref(null)
 const option = compactOption
 
-const rule = [
+const rule = ref([
   divider('基本信息'),
   inputField({ field: 'name', title: '姓名', required: true }),
   selectField({
@@ -58,7 +58,7 @@ const rule = [
       { label: '女', value: '2' },
     ],
   }),
-]
+])
 </script>
 ```
 
@@ -298,21 +298,14 @@ transDic('sex', '1')  // => '男'
 
 ```bash
 # 安装依赖
-pnpm install
+pnpm i
 
 # 启动 demo
-pnpm dev
+pnpm run dev
 
-# 构建库
-pnpm build
+
 ```
 
-## 发布
-
-```bash
-pnpm build
-npm publish
-```
 
 ## 浏览器支持
 
