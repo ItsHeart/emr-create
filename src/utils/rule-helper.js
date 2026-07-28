@@ -211,6 +211,73 @@ export function templateTextField({ field, title, templates = [], rows = 3, span
   }
 }
 
+/**
+ * 创建是/否/未知 三态选择字段规则
+ * @param {Object} config - 配置项
+ * @param {string} config.field - 字段名
+ * @param {string} config.title - 标题
+ * @param {boolean} config.required - 是否必填
+ * @param {number} config.span - 栅格跨度
+ * @param {boolean} config.withUnknown - 是否包含“未知”选项，默认 true
+ * @returns {Object} form-create rule
+ *
+ * @example
+ * yesNoField({ field: 'allergyHistory', title: '过敏史' })
+ */
+export function yesNoField({ field, title, required = false, span, withUnknown = true }) {
+  const options = [
+    { label: '是', value: '1' },
+    { label: '否', value: '0' },
+  ]
+  if (withUnknown) {
+    options.push({ label: '未知', value: '9' })
+  }
+  const rule = {
+    type: 'yesNoGroup',
+    field,
+    title,
+    props: { options, withUnknown },
+  }
+  if (required) {
+    Object.assign(rule, buildRedLabel(title))
+    rule.validate = [{ required: true, message: `请选择${title}`, trigger: 'change' }]
+  }
+  if (span) rule.col = { span }
+  return rule
+}
+
+/**
+ * 创建 ICD 诊断编码选择字段规则
+ * @param {Object} config - 配置项
+ * @param {string} config.field - 字段名
+ * @param {string} config.title - 标题
+ * @param {boolean} config.required - 是否必填
+ * @param {boolean} config.multiple - 是否多选，默认 false
+ * @param {number} config.span - 栅格跨度
+ * @param {Function} config.fetchOptions - 远程搜索函数
+ * @returns {Object} form-create rule
+ *
+ * @example
+ * icdField({ field: 'diagnosis', title: '诊断', fetchOptions: searchIcd })
+ */
+export function icdField({ field, title, required = false, multiple = false, span, fetchOptions }) {
+  const rule = {
+    type: 'icdCodeSelect',
+    field,
+    title,
+    props: {
+      multiple,
+      fetchOptions,
+    },
+  }
+  if (required) {
+    Object.assign(rule, buildRedLabel(title))
+    rule.validate = [{ required: true, message: `请选择${title}`, trigger: 'change' }]
+  }
+  if (span) rule.col = { span }
+  return rule
+}
+
 export function deepClone(source) {
   if (!source && typeof source !== "object") {
     throw new Error("error arguments", "deepClone");

@@ -12,6 +12,12 @@ import ModifyItem from './components/ModifyItem.vue'
 import OnlyShow from './components/OnlyShow.vue'
 import ReadItem from './components/ReadItem.vue'
 import ConditionalGroup from './components/ConditionalGroup.vue'
+import VitalSigns from './components/VitalSigns.vue'
+import IcdCodeSelect from './components/IcdCodeSelect.vue'
+import MedicationInput from './components/MedicationInput.vue'
+import SignaturePad from './components/SignaturePad.vue'
+import YesNoGroup from './components/YesNoGroup.vue'
+import PrintTemplate from './components/PrintTemplate.vue'
 
 // 预设配置
 export { createOption, compactOption, mediumOption, wideOption } from './presets/option.js'
@@ -28,12 +34,52 @@ export {
   dateField,
   multipleSelectField,
   templateTextField,
+  yesNoField,
+  icdField,
 } from './utils/rule-helper.js'
 
 export { translateDict, createDictTranslator, findOption } from './utils/dict.js'
 
+export {
+  idCardValidator,
+  phoneValidator,
+  rangeValidator,
+  temperatureValidator,
+  systolicValidator,
+  diastolicValidator,
+  pulseValidator,
+  breathValidator,
+  bmiValidator,
+  dateBeforeValidator,
+  dateAfterValidator,
+  requiredValidator,
+  maxLengthValidator,
+} from './utils/validator.js'
+
+export {
+  formatDate,
+  formatNumber,
+  formatBloodPressure,
+  formatIcdCode,
+  formatMultiValue,
+  calcHospitalDays,
+  formatEmpty,
+} from './utils/formatter.js'
+
+export {
+  saveDraft,
+  loadDraft,
+  removeDraft,
+  hasDraft,
+  getDraftTime,
+} from './utils/storage.js'
+
 // 组合式 API
 export { useFormCreate } from './composables/useFormCreate.js'
+export { useFormDraft } from './composables/useFormDraft.js'
+export { useFormPrint } from './composables/useFormPrint.js'
+export { useFormLinkage } from './composables/useFormLinkage.js'
+export { useDictBatch } from './composables/useDictBatch.js'
 
 // 导出组件
 export {
@@ -45,6 +91,12 @@ export {
   OnlyShow,
   ReadItem,
   ConditionalGroup,
+  VitalSigns,
+  IcdCodeSelect,
+  MedicationInput,
+  SignaturePad,
+  YesNoGroup,
+  PrintTemplate,
 }
 
 /**
@@ -59,6 +111,12 @@ const componentMap = {
   onlyShow: OnlyShow,
   ReadItem: ReadItem,
   conditionalGroup: ConditionalGroup,
+  vitalSigns: VitalSigns,
+  icdCodeSelect: IcdCodeSelect,
+  medicationInput: MedicationInput,
+  signaturePad: SignaturePad,
+  yesNoGroup: YesNoGroup,
+  printTemplate: PrintTemplate,
 }
 
 /**

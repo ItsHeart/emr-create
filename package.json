@@ -1,6 +1,6 @@
 {
   "name": "emr-create",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "基于 @form-create/naive-ui 的医疗表单增强组件库，提供开箱即用的自定义组件、表单配置预设和工具函数。",
   "type": "module",
   "main": "./dist/emr-create.umd.cjs",
@@ -9,10 +9,21 @@
     ".": {
       "import": "./dist/emr-create.js",
       "require": "./dist/emr-create.umd.cjs"
-    }
+    },
+    "./components": {
+      "import": "./src/components/index.js"
+    },
+    "./utils": {
+      "import": "./src/utils/index.js"
+    },
+    "./composables": {
+      "import": "./src/composables/index.js"
+    },
+    "./dist/style.css": "./dist/emr-create.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "dev": "vite",
