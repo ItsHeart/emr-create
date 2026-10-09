@@ -23,7 +23,9 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "dev": "vite",
@@ -41,7 +43,7 @@
     "form-builder"
   ],
   "author": "ItsHeart",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "https://github.com/ItsHeart/emr-create"
